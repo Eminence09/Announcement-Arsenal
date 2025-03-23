@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Uploads</title>
+  </head>
+
+  <body>
+    <br />
+    <h1>Welcome!</h1>
+    Hello, {{ user.username|default:"Guest" }}!
+    <hr />
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <label for="File">Upload PDF Files</label><br />
+      <input type="file" name="document" />
+
+      <button class="btn" type="submit">Submit</button>
+    </form>
+
+    <form action="/user_data/" method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{new_form.as_p}}
+      <button class="btn2" type="submit">Data</button>
+    </form>
+  </body>
+</html>

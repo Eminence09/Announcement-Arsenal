@@ -1,0 +1,164 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uploaded Files</title>
+    <style>
+      
+      .file_desc button a {
+        color: #242424;
+        text-decoration: none;
+      }
+
+      .file_desc button {
+        margin-right: 24px;
+      }
+
+      #delete_all{
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        height: 33px;
+        background: #efefef;
+        width: 86px;
+      }
+
+      #delete_all a{
+        color: black;
+        text-decoration: none;
+        
+      }
+      {% comment %} .hr_{
+        position: fixed;
+        width: 60vw;
+      } {% endcomment %}
+
+      
+
+      #upload_files_again{
+        position: absolute;
+        top: 22%;
+        right: 10%;
+        height: 33px;
+        background: #efefef;
+        width: 86px;
+      }
+
+      .container{
+        height: 400px;
+        width: 500px;
+        background-color: antiquewhite;
+      }
+
+      
+    </style>
+  </head>
+
+
+  <body>
+    
+    {% load static %}
+    {% for fileupload in fileupload_list %}
+    <hr class="hr_">
+    <div class="file_desc">
+      <p>{{ fileupload.raw_pdfs.name}}</p>
+
+      <button>
+        <a href="{{ fileupload.raw_pdfs.url }}">View</a>
+      </button>
+
+      <form action="/file_info/" method="post" enctype="multipart/form-data"> {% csrf_token %} 
+    
+        <button id="file_in" type="submit">File Info</button>
+      </form>
+    </div>
+    
+    {% endfor %}
+
+
+
+    {% load static %}
+    {% for file in filed %}
+    <hr class="hr_">
+    <div class="file_desc">
+      <p>{{ file.raw_pdfs.name}}</p>
+
+      <button>
+        <a href="{{ file.raw_pdfs.url }}">View</a>
+      </button>
+
+      <form action="/file_info/" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    
+        <button id="file_info" type="submit">File Info</button>
+      </form>
+
+    </div>
+
+    {% endfor %}
+
+
+    <form action="/filesrestored/" method="post" enctype="multipart/form-data"> {% csrf_token %} {{new_form.as_p}}
+    
+    <button id="delete_all" type="submit">Delete All</button>
+    </form>
+
+
+
+
+    {% load static %}
+    {% for for_file in object_of_files %}
+    <hr class="hr_">
+    <div class="file_desc">
+      <p>{{ for_file.raw_pdfs.name}}</p>
+
+      
+      <button>
+        <a href="{{ for_file.raw_pdfs.url }}">View</a>
+      </button>
+
+      <form action="/file_info/" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    
+        <button id="file_info" type="submit">File Info</button>
+      </form>
+
+    
+    </div>
+    
+    {% endfor %}
+
+
+    
+
+    {% load static %}
+    {% for del_ in object_of_files %}
+    <hr class="hr_">
+    <div class="file_desc">
+      <p>{{ del_.raw_pdfs.name}}</p>
+
+      <button>
+        <a href="{{ del_.raw_pdfs.url }}">View</a>
+      </button>
+
+      <form action="/file_info/" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    
+        <button id="file_info" type="submit">File Info</button>
+      </form>
+
+    
+    </div>
+    
+    {% endfor %}
+
+    <form action="/filesrestored/" method="post" enctype="multipart/form-data"> {% csrf_token %} {{new_form.as_p}}
+    <button id="delete_all" type="submit">Delete All</button>
+    </form>
+
+
+    <form action="/upload_files/" enctype="multipart/form-data"> {% csrf_token %} {{new_form.as_p}}
+    <button id="upload_files_again" type="submit">Upload Files</button>
+
+    </form>
+
+
+  </body>
+</html>

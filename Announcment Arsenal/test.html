@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 180px;
+            width: 200px;
+            background-color: hsl(0deg 0% 100%);
+            position: absolute;
+            top: 35%;
+            left: 40%;
+            border: 2px solid;
+            border-radius: 8px;
+
+        }
+
+        .upper {
+            height: 50px;
+            width: 200px;
+            background-color: hsl(0deg 0% 95.29%);
+            /* border-radius: 8px; */
+
+        }
+
+        .bottom {
+            width: 200px;
+            height: calc(180px - 150px);
+            background-color: rebeccapurple;
+            position: absolute;
+            top: 83%;
+            display: flex;
+            justify-content: end;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            width: 55px;
+            position: relative;
+            left: -26%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container"> 
+        <div class="upper">
+
+            Delete All Files
+
+        </div>Do you really want to delete all file?
+        <div class="bottom">
+            <div class="btn">
+                <button>OK</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
